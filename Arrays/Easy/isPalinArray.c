@@ -4,7 +4,6 @@
 
 bool isPalinArray(int arr[], int n)
 {
-    int flag = false;
     for (int i = 0; i < n; i++)
     {
         int num = arr[i], expo = 0;
@@ -26,23 +25,19 @@ bool isPalinArray(int arr[], int n)
             num = num / 10;
             expo--;
         }
-        if (arr[i] == rev_num)
+        if (arr[i] != rev_num)
         {
-            flag = true;
-        }
-        else
-        {
-            flag = false;
+            return false;
         }
     }
 
-    return flag;
+    return true;
 }
 
 void main()
 {
 
-    int arr[] = {121, 131, 20};
+    int arr[] = {258952, 3693, 1471, 7417, 58585};
     int size = sizeof(arr) / sizeof(int);
 
     printf("Result: %d", isPalinArray(arr, size));
