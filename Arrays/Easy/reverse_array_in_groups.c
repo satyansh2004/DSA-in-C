@@ -52,7 +52,6 @@ void reverseInGroups(int arr[], int k, int size_array)
                 start_array++;
             }
             sub_arr_size = size_array - k;
-            start_array++;
         }
     }
 }
