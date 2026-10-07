@@ -1,40 +1,31 @@
 #include <stdio.h>
-
-int new_arr[10] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+#include <stdlib.h>
 
 int *leaders(int *arr, int n, int *returnSize)
 {
-
-    int size = 0, index = 0;
-    int non_arr[20];
-
+    int *new_arr = malloc(*returnSize * sizeof(int));
     for (int i = 0; i < n; i++)
     {
+        int num = arr[i], flag = 1;
         for (int j = i + 1; j < n; j++)
         {
             if (arr[i] < arr[j])
             {
-                non_arr[index] = arr[i];
-                index++;
-                break;
+                flag = 0;
+                goto next;
             }
-        }
-    }
 
-    for (int i = 0; i < n; i++)
-    {
-        for (int j = 0; j < index; j++)
+            num = arr[i];
+        }
+
+    next:
+
+        if (flag != 0)
         {
-            if (arr[i] == non_arr[j]) {
-                break;
-            }
-            else {
-                printf("%d\n", arr[i]);
-            }
+            new_arr[*returnSize] = num;
+            (*returnSize)++;
         }
     }
-
-    *returnSize = size;
 
     return new_arr;
 }
@@ -45,12 +36,15 @@ void main()
     int size_arr = sizeof(arr) / sizeof(int);
     int return_size = 0;
 
-    //int *result = 
-    leaders(arr, size_arr, &return_size);
+    int *result = leaders(arr, size_arr, &return_size);
 
-    // for (int i = 0; i < return_size; i++)
-    // {
-    //     printf("%d ", *result);
-    //     result++;
-    // }
+    int *temp = result;
+    for (int i = 0; i < return_size; i++)
+    {
+        printf("%d ", *result);
+        result++;
+    }
+
+
+    free(temp);
 }
