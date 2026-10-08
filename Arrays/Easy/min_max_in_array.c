@@ -24,7 +24,7 @@ int *getMinMax(int arr[], int size)
     return new_arr;
 }
 
-int main()
+void main()
 {
 
     int arr[] = {28004, 23544, 32504, 29493, 17013, 17850, 18952, 12089, 5126, 10353};
@@ -40,6 +40,4 @@ int main()
     }
 
     free(temp);
-
-    return 0;
 }
