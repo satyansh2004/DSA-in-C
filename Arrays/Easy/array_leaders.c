@@ -45,6 +45,5 @@ void main()
         result++;
     }
 
-
     free(temp);
 }
