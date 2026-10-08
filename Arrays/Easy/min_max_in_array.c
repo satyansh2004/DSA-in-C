@@ -40,4 +40,6 @@ int main()
     }
 
     free(temp);
+
+    return 0;
 }
