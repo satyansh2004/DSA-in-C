@@ -2,45 +2,48 @@
 
 void pushZerosToEnd(int arr[], int size) {
 
-  int zeroes_present = 1;
-  for (int i =0; i < size; i++) {
-    if (arr[i] != 0) {
-      zeroes_present = 0;
+  int zeroes_present = 0;
+  
+  for (int i = 0; i < size; i++) {
+    if (arr[i] == 0) {
+      zeroes_present = 1;
+      break;
     }
     else {
-      zeroes_present = 1;
+      zeroes_present = 0;
     }
   }
 
   if (zeroes_present == 0) {
-    printf("No zero in the array");
     return;
   }
 
+  int arr_non_zero[size], count_non_zero = 0;
+
+  
   for (int i = 0; i < size; i++) {
+    if (arr[i] != 0) {
+      arr_non_zero[count_non_zero] = arr[i];
+      count_non_zero++;
+    }
+}
 
-    if (arr[i] == 0) {
+  int count_non_zero_index = 0;
 
-      int temp_index = size - 1;
-
-      if (arr[temp_index] == 0) {
-        temp_index = temp_index - 1;
-      }
-
-      int temp = arr[temp_index];
-      arr[i] = temp;
-      arr[temp_index] = 0;
-
+  for (int i = 0; i < size; i++) {
+    if (i < count_non_zero) {
+        arr[i] = arr_non_zero[count_non_zero_index];
+        count_non_zero_index++;
     }
     else {
-      continue;
+      arr[i] = 0;
     }
   }
 
 }
 
 void main() {
-  int arr[] = {1, 2, 0, 4, 3, 0, 5, 0}, size = sizeof(arr) / sizeof (int);
+  int arr[] = {3, 5, 0, 0, 4}, size = sizeof(arr) / sizeof (int);
 
   for (int i = 0; i < size; i++) {
     printf("%d ", arr[i]);
